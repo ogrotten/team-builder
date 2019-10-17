@@ -1,18 +1,29 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 
-let list = {name: "Darrin", location: "KC"};
+let list = [{name: "Darrin", location: "KC"}];
 
-const Team = data => {
-	const { name, location } = data;
-	console.log(name, location);
-}
+const Team = props => (
+	// console.log("team: ", data);
+	// return(data);
+	<div>
+		{props.allMember.map((memb, index) => (
+			<div key={index}>
+				{memb.name} ({memb.location})
+			</div>
+		))}
+		{/* {allMember.allMember[0].name} */}
+	</div>
+);
 
 function App() {
-	const [member, setMember] = useState(list)
+	const [allMember, setMember] = useState(list)
+	console.log("allMember ", allMember);
+	// debugger;
 
 	return (
 		<div className="App">
+			<Team allMember={allMember} />
 		</div>
 	);
 }
